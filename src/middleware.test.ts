@@ -47,7 +47,7 @@ describe("subscription middleware", () => {
     expect(response.headers.get("location")).toBe("http://localhost/subscribe");
   });
 
-  it.each(["/agency", "/agency/sub-accounts/new", "/sa/workspace-1/dashboard", "/sa/workspace-1/quotes", "/sa/workspace-1/quotes/new?kind=invoice", "/sa/workspace-1/products", "/api/sub-accounts/workspace-1/quotes"])("allows a verified self-hosted owner through %s despite a stale billing claim", async (path) => {
+  it.each(["/agency", "/agency/sub-accounts/new", "/sa/workspace-1/dashboard", "/sa/workspace-1/quotes", "/sa/workspace-1/quotes/new?kind=invoice", "/sa/workspace-1/products", "/api/sub-accounts/workspace-1/quotes", "/api/assistant"])("allows a verified self-hosted owner through %s despite a stale billing claim", async (path) => {
     vi.stubEnv("SELF_HOSTED_MODE", "true");
     const options = await optionsFor(path);
     const headers = new Headers({ "x-user-uid": "spoofed" });
@@ -74,6 +74,13 @@ describe("subscription middleware", () => {
     vi.stubEnv("SELF_HOSTED_MODE", "true");
     const options = await optionsFor("/agency");
     const response = await options.handleInvalidToken!(InvalidTokenReason.MISSING_CREDENTIALS);
+    expect(new URL(response.headers.get("location")!).pathname).toBe("/login");
+  });
+
+  it("does not trust a spoofed assistant identity header without session authentication", async () => {
+    const options = await optionsFor("/api/assistant", { "x-user-uid": "owner-1" });
+    const response = await options.handleInvalidToken!(InvalidTokenReason.MISSING_CREDENTIALS);
+    expect(response.headers.get("x-middleware-next")).toBeNull();
     expect(new URL(response.headers.get("location")!).pathname).toBe("/login");
   });
 });

@@ -12,11 +12,11 @@ export const ZACK_PRODUCT_KB = `# MAROS product guide
 - Never claim an import, connection, message, publication, or payment happened unless the interface confirms it.
 
 ## Main navigation
-- Your Day: Today, Tasks.
+- Main: Today, Contacts, Deals.
 - Site Health: Site Health shows the completion score and remaining website/compliance tasks.
-- Clients: Conversations, People, Client Journeys, Calendar, Booking.
-- Growth: Lead Capture, Follow-Up Plans, Marketing Pages.
-- Business: Business Blueprint, AI Assistants, Connections, Domain, AI Website Studio, Media Library, Templates, Analytics, Logs, Settings.
+- Sales & Engagement: Calendar, Booking, Conversations, Tasks, AI Assistants, Quotes & Invoices, Analytics.
+- Marketing: Lead Capture, Automations, Landing Pages, Email Campaigns, Ad Spend & Billing. Availability follows workspace feature settings.
+- Connect & Set Up: Business Blueprint, Connect, Site Health, Media Library, Domain, Website Studio, Templates, Products, Logs, Settings.
 
 ## Guided setup
 - Setup is Build as you go: Domain -> External host -> Business source -> Business Blueprint -> Website build -> connections and launch.
@@ -31,11 +31,11 @@ export const ZACK_PRODUCT_KB = `# MAROS product guide
 
 ## Other setup paths
 - Public profile prefill: in Business Blueprint, paste a public website, brokerage, Zillow, Realtor.com, or Homes.com page. MAROS fills only verifiable details; the operator reviews and saves the draft.
-- Contacts: use People (Contacts) for CSV imports and manual contacts. There is no direct connected-account import from GoHighLevel or any other CRM — bring records over as a CSV export from the source platform.
+- Contacts: use Contacts for CSV imports and manual contacts. There is no direct connected-account import from GoHighLevel or any other CRM — bring records over as a CSV export from the source platform.
 - Lead Capture: create a form; submissions can create contacts and enter follow-up.
-- Follow-Up Plans: configure the response sequence connected to a lead source.
+- Automations: configure the response sequence connected to a lead source.
 - Listing re-promotion: MAROS AI can prepare a 30/60/90-day plan for an approved listing. Day 30 refreshes positioning and creative, day 60 expands distribution and follow-up, and day 90 prepares a seller-review package with performance evidence and next-step options. Planning is read-only; scheduling or sending requires the operator's explicit approval and the necessary listing, channel, and contact connections.
-- Client Journeys: track opportunities through the real-estate pipeline.
+- Deals: track opportunities through the pipeline.
 - Booking: create and share appointment pages.
 - Connections: email, SMS, calendars, payments, and integrations. Business email setup is available from Connections → Business email, which opens Settings → Messaging & email at the Business email section. Users can connect services from the Connections screen; never ask for passwords or API keys in chat.
 - Media Library: upload approved logos, headshots, guides, and documents once, then reuse them throughout MAROS and the Business Blueprint.

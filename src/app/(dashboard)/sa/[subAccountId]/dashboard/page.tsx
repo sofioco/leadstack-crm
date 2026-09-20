@@ -46,8 +46,7 @@ import {
   ONBOARDING_METHOD_STEPS,
 } from "@/lib/onboarding/steps";
 
-const DAY_MS = 24 * 60 * 60 * 1000;
-const STALLED_AFTER_MS = 7 * DAY_MS;
+import { DAY_MS, isNewLead, isOpenDeal, isStalledDeal, isAssignedFollowUp } from "@/lib/dashboard/priority-signals";
 
 type DashboardCampaign = CampaignBriefDoc & {
   listing?: { photos?: unknown[] } | null;
@@ -215,7 +214,7 @@ export default function DashboardPage() {
   const stages = usePipelineStages();
   const openDeals = useMemo(
     () =>
-      deals.filter((deal) => deal.stageId !== "won" && deal.stageId !== "lost"),
+      deals.filter(isOpenDeal),
     [deals]
   );
 
@@ -244,13 +243,7 @@ export default function DashboardPage() {
   // sidebar badge.
   const overdueTasks = useMemo(
     () =>
-      tasks.filter((task) => {
-        if (task.completed) return false;
-        if ((task.assignedToUid ?? task.createdByUid) !== user?.uid)
-          return false;
-        const due = toDate(task.dueAt)?.getTime();
-        return due != null && due < todayEnd;
-      }),
+      tasks.filter((task) => isAssignedFollowUp(task, user?.uid, todayEnd)),
     [tasks, todayEnd, user]
   );
 
@@ -276,11 +269,7 @@ export default function DashboardPage() {
 
   const stalledDeals = useMemo(
     () =>
-      openDeals.filter((deal) => {
-        if (deal.stageId === "new") return false;
-        const changed = toDate(deal.stageChangedAt)?.getTime() ?? 0;
-        return changed > 0 && nowMs - changed >= STALLED_AFTER_MS;
-      }),
+      openDeals.filter((deal) => isStalledDeal(deal, nowMs)),
     [openDeals, nowMs]
   );
 
@@ -289,13 +278,7 @@ export default function DashboardPage() {
     [sessions]
   );
 
-  const newLeads = useMemo(() => {
-    const cutoff = nowMs - DAY_MS;
-    return contacts.filter((contact) => {
-      const created = toDate(contact.createdAt)?.getTime() ?? 0;
-      return created >= cutoff;
-    });
-  }, [contacts, nowMs]);
+  const newLeads = useMemo(() => contacts.filter((contact) => isNewLead(contact, nowMs)), [contacts, nowMs]);
 
   const isWorkspaceEmpty =
     contacts.length === 0 &&
