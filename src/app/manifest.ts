@@ -18,7 +18,7 @@ export default function manifest(): MetadataRoute.Manifest {
     // start_url, so changing start_url later would read as a different app and
     // orphan every existing install rather than updating it.
     id: "/?source=pwa",
-    name: `${name} — Real Estate Operating System`,
+    name: `${name} — Marketing Operating System`,
     short_name: name,
     description:
       LANDING_VARIANT === "custom"

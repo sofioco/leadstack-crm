@@ -44,6 +44,7 @@ const TITLES: Array<[RegExp, string]> = [
   [/^\/dashboard$/, "Today"],
   [/^\/sa\/[^/]+\/dashboard\/settings/, "Settings"],
   [/^\/sa\/[^/]+\/dashboard$/, "Today"],
+  [/^\/sa\/[^/]+\/get-started/, "Get started"],
   [/^\/sa\/[^/]+\/conversations\/[^/]+/, "Conversation"],
   [/^\/sa\/[^/]+\/conversations/, "Conversations"],
   [/^\/sa\/[^/]+\/contacts\/[^/]+/, "Contact"],
@@ -84,7 +85,7 @@ function titleFor(pathname: string): string {
   for (const [re, label] of TITLES) {
     if (re.test(pathname)) return label;
   }
-  return "AgentStack";
+  return "MAROS";
 }
 
 function activeSubAccountFromPath(pathname: string): string | null {

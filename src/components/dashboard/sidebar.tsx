@@ -51,7 +51,8 @@ import { useDueTodayCount } from "@/hooks/use-due-today";
 import { useUnreadConversationsCount } from "@/hooks/use-unread-conversations";
 import { useAuth } from "@/hooks/use-auth";
 import { useAgency } from "@/hooks/use-agency";
-import { LogoMark } from "@/components/brand/logo-mark";
+import { CUSTOM_BRAND } from "@/config/landing";
+import { isWorkspaceNavVisible } from "@/config/workspace-presentation";
 import { InstallCallout } from "@/components/pwa/install-callout";
 import { cn } from "@/lib/utils";
 import {
@@ -258,7 +259,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
     <div className="pl-safe flex h-full flex-col bg-[#4F6F9F] text-white">
       {/* Logo / brand */}
       <div className="flex h-16 items-center border-b border-white/20 px-5">
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link href="/" className="flex min-w-0 items-center gap-2.5">
           {agency.logoUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -266,11 +267,12 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
               alt={displayBrandName}
               className="h-6 w-auto max-w-[120px] object-contain"
             />
-          ) : (
-            <LogoMark size={30} idSuffix="-sidebar" tone="dark" />
-          )}
-          <span className="truncate text-sm font-semibold text-white">
-            {displayBrandName}
+          ) : null}
+          <span className="min-w-0 text-white">
+            <span className="block text-lg font-semibold">{CUSTOM_BRAND.name}</span>
+            <span className="block truncate text-xs text-white/80" title={displayBrandName}>
+              {displayBrandName === CUSTOM_BRAND.name ? CUSTOM_BRAND.tagline : displayBrandName}
+            </span>
           </span>
         </Link>
       </div>
@@ -347,13 +349,13 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
                 className="flex min-h-11 w-full items-center gap-2.5 rounded-md bg-white/15 px-2 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#6EA8FE] hover:text-[#102A4C]"
               >
                 <Sparkles className="h-4 w-4 shrink-0" />
-                Ask Zack
+                MAROS AI
               </button>
             </div>
 
             {/* ── Primary nav items (flat, always visible) ── */}
             <div className="mb-2">
-              {PRIMARY_NAV.map((item) => {
+              {PRIMARY_NAV.filter((item) => isWorkspaceNavVisible(item.href)).map((item) => {
                 const fullHref = `${subRoot ?? `/sa/${linkSubId}`}${item.href}`;
                 const isActive =
                   pathname === fullHref ||
@@ -489,6 +491,7 @@ function NavGroupSection({
       {expanded && (
         <div className="ml-2 border-l border-white/15 pl-1">
           {group.items.map((item) => {
+            if (!isWorkspaceNavVisible(item.href)) return null;
             if (
               !multiAccountMode &&
               (item.href === "/quotes" || item.href === "/products")

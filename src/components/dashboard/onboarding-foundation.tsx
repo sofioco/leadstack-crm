@@ -176,8 +176,8 @@ export function OnboardingFoundation({
           Start with your digital foundation.
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-blue-100/90">
-          Bring your domain and external host first. AgentStack then builds visibly
-          alongside you while Zack carries each approved answer into your
+          Bring your domain and external host first. MAROS then builds visibly
+          alongside you while MAROS AI carries each approved answer into your
           Business Blueprint. No DNS or marketing-software experience needed.
         </p>
       </div>
@@ -187,7 +187,7 @@ export function OnboardingFoundation({
           <div>
             <p className="font-semibold">Your build is in progress</p>
             <p className="text-muted-foreground text-sm">
-              Complete one small decision at a time. You can work in AgentStack
+              Complete one small decision at a time. You can work in MAROS
               while the site is prepared.
             </p>
           </div>
@@ -222,7 +222,7 @@ export function OnboardingFoundation({
               Choose your domain starting point
             </h2>
             <p className="text-muted-foreground mt-1 text-sm">
-              Buy a domain, connect one you own, or let Zack guide the choice.
+              Buy a domain, connect one you own, or let MAROS AI guide the choice.
               Nothing changes until you approve it.
             </p>
           </div>
@@ -314,12 +314,12 @@ export function OnboardingFoundation({
             [
               "transfer",
               "Replace my existing site",
-              "AgentStack reproduces the current design and code, then brings over approved CRM, contact, and brand details.",
+              "MAROS reproduces the current design and code, then brings over approved CRM, contact, and brand details.",
             ],
             [
               "foundation",
               "Build a new business",
-              "Watch AgentStack and Zack prepare the site and digital foundation.",
+              "Watch MAROS and MAROS AI prepare the site and digital foundation.",
             ],
             [
               "fresh",
@@ -359,13 +359,13 @@ export function OnboardingFoundation({
               </h2>
               <p className="text-muted-foreground mt-1 text-sm">
                 Choose where you are coming from and paste a public page.
-                AgentStack copies only facts it can verify and leaves them as a
+                MAROS copies only facts it can verify and leaves them as a
                 draft for your approval.
               </p>
               <p className="mt-2 rounded-lg border border-blue-200 bg-blue-50 p-3 text-xs leading-5 text-[#173b7a]">
                 Your public website stays live while the provider transfer is
-                tracked. AgentStack does not proxy that site into the editor;
-                Website Studio prepares content for your external host; AgentStack
+                tracked. MAROS does not proxy that site into the editor;
+                Website Studio prepares content for your external host; MAROS
                 does not provide hosting.
               </p>
             </div>
@@ -427,9 +427,9 @@ export function OnboardingFoundation({
             </p>
             <h2 className="mt-1 font-semibold">Record your external host</h2>
             <p className="text-muted-foreground mt-1 text-sm">
-              AgentStack does not provide, sell, or transfer website hosting.
+              MAROS does not provide, sell, or transfer website hosting.
               Keep your domain and website with your external provider while
-              AgentStack helps with content, SEO, and business workflows.
+              MAROS helps with content, SEO, and business workflows.
             </p>
           </div>
         </div>
@@ -437,7 +437,7 @@ export function OnboardingFoundation({
           <p className="text-sm font-semibold">Use your provider&apos;s dashboard</p>
           <p className="text-muted-foreground mt-1 text-xs leading-5">
             Choose <strong>Keep my current host</strong> in the domain setup
-            after you have confirmed where your website is served. AgentStack
+            after you have confirmed where your website is served. MAROS
             does not open hosting accounts or provide a hosting destination.
           </p>
           <Button
@@ -473,9 +473,9 @@ export function OnboardingFoundation({
             <Sparkles className="h-8 w-8 text-pink-500" />
             <p className="mt-3 font-semibold">Your private build starts here</p>
             <p className="text-muted-foreground mt-1 max-w-sm text-sm">
-              Choose a ready-made real-estate site or describe the design to
-              Zack. The preview and public renderer use the same structured
-              AgentStack site.
+              Choose a website starting point or describe the design to
+              MAROS AI. The preview and public renderer use the same structured
+              MAROS site.
             </p>
             <Button
               className="mt-4"
@@ -491,7 +491,7 @@ export function OnboardingFoundation({
           <h2 className="mt-3 font-semibold">Secure payment readiness</h2>
           <p className="text-muted-foreground mt-2 text-sm">
             Your subscription card is stored securely by Stripe—not
-            AgentStack—so approved domain, hosting, and future add-on purchases
+            MAROS—so approved domain, hosting, and future add-on purchases
             can move faster.
           </p>
           <Button

@@ -78,7 +78,7 @@ describe("external-host-only domain setup", () => {
     expect(screen.getByText("Connect your host")).toBeInTheDocument();
     expect(screen.getByText("Verify your domain")).toBeInTheDocument();
     expect(screen.queryByText("Point DNS")).not.toBeInTheDocument();
-    expect(screen.queryByText("Host with AgentStack")).not.toBeInTheDocument();
+    expect(screen.queryByText("Host with MAROS")).not.toBeInTheDocument();
     expect(screen.queryByText("Move my site to a new host")).not.toBeInTheDocument();
   });
 
@@ -137,7 +137,7 @@ describe("external-host-only domain setup", () => {
     await userEvent.click(screen.getByText("I don't have a website"));
 
     expect(screen.getByText("Connect your host")).toBeInTheDocument();
-    expect(screen.queryByText("Host with AgentStack")).not.toBeInTheDocument();
+    expect(screen.queryByText("Host with MAROS")).not.toBeInTheDocument();
     expect(screen.queryByText(/register a domain at hostinger/i)).not.toBeInTheDocument();
   });
 });

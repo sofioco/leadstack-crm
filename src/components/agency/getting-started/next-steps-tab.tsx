@@ -79,7 +79,7 @@ const STEPS: NextStep[] = [
   },
   {
     number: 6,
-    title: "Create the real-estate website",
+    title: "Create your business website",
     why: "Open Website Studio, choose a ready-made business site, customize sections directly, and preview the draft before publishing to your existing host.",
     cta: "Open Website Studio",
     href: SUB_ACCOUNT_ROUTES.website,

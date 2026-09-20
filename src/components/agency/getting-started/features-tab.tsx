@@ -140,7 +140,7 @@ const FEATURES: Feature[] = [
     tone: "emerald",
     href: "/website-studio",
     description:
-      "Create real-estate website content with ready-made starting points, direct section controls, Zack-assisted copy, and a private preview for your existing host.",
+      "Create business website content with ready-made starting points, direct section controls, MAROS AI-assisted copy, and a private preview for your existing host.",
   },
   {
     icon: BarChart3,

@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { getAdminAuth, getAdminDb } from "@/lib/firebase/admin";
 import { provisionNewAgency } from "@/lib/auth/provision-agency";
 import { resolveAgencyAccess } from "@/lib/auth/resolve-agency-access";
+import { requiresSubscription } from "@/lib/auth/deployment-entitlement";
 
 export async function POST(request: Request) {
   const authorization = request.headers.get("authorization") ?? "";
@@ -28,6 +29,7 @@ export async function POST(request: Request) {
 
   const uid = decoded.uid;
   const email = decoded.email.trim().toLowerCase();
+  const userRecord = await auth.getUser(uid);
   const resolved = await resolveAgencyAccess(uid);
   if (resolved) {
     const legacyRole =
@@ -37,28 +39,28 @@ export async function POST(request: Request) {
     // This is especially important after Firebase Admin credentials are fixed:
     // the account may exist while the browser token still lacks agencyId.
     await auth.setCustomUserClaims(uid, {
+      ...userRecord.customClaims,
       role: legacyRole,
       status: resolved.status,
       agencyId: resolved.agencyId,
       agencyRole: resolved.agencyRole,
+      billingRequired: resolved.agencyRole === "owner" && requiresSubscription(),
     });
 
     if (resolved.agencyRole === "owner" && resolved.agencyId) {
       const agencyId = resolved.agencyId;
       const agencySnap = await getAdminDb().doc(`agencies/${agencyId}`).get();
       const subscriptionStatus = agencySnap.data()?.subscriptionStatus;
-      const requiresBilling =
-        subscriptionStatus !== "active" && subscriptionStatus !== "trialing";
+      const requiresBilling = requiresSubscription(subscriptionStatus);
       await auth.setCustomUserClaims(uid, {
+        ...userRecord.customClaims,
         role: legacyRole,
         status: resolved.status,
         agencyId: resolved.agencyId,
         agencyRole: resolved.agencyRole,
         billingRequired: requiresBilling,
       });
-      if (
-        requiresBilling
-      ) {
+      if (requiresBilling) {
         return NextResponse.json({
           redirectTo: "/subscribe",
           requiresBilling: true,
@@ -78,7 +80,6 @@ export async function POST(request: Request) {
     });
   }
 
-  const userRecord = await auth.getUser(uid);
   const displayName =
     userRecord.displayName?.trim() || email.split("@")[0] || "AgentStack user";
 
@@ -108,9 +109,10 @@ export async function POST(request: Request) {
     );
   }
 
+  const requiresBilling = requiresSubscription();
   return NextResponse.json({
-    redirectTo: "/subscribe",
-    requiresBilling: true,
+    redirectTo: requiresBilling ? "/subscribe" : "/agency",
+    requiresBilling,
     agencyId: provisioned.agencyId,
     subAccountId: provisioned.subAccountId,
     existing: false,

@@ -38,7 +38,7 @@ import { cleanAssistantAnswer } from "@/lib/assistant/response";
  */
 
 const OPEN_EVENT = "agentstack:ask-assistant";
-const ASSISTANT_NAME = "Zack";
+const ASSISTANT_NAME = "MAROS AI";
 
 interface OpenAskAssistantOptions {
   /**
@@ -69,17 +69,17 @@ const STUDIO_PATHS = [
 ];
 
 const CRM_SUGGESTIONS = [
-  "Write a follow-up email for a buyer who went quiet",
+  "Write a follow-up email for a lead who went quiet",
   "What should I focus on today?",
-  "Help me prepare for a listing appointment",
-  "Draft a market update for my sphere",
+  "Help me prepare for a customer appointment",
+  "Draft a business update for my customers",
 ];
 
 const STUDIO_SUGGESTIONS = [
-  "Write a listing description for a 3BR colonial",
-  "Draft 5 Instagram captions for a new listing",
-  "Write copy for a home-valuation landing page",
-  "What should my open house email say?",
+  "Write a description of my services",
+  "Draft 5 Instagram captions for a new offer",
+  "Write copy for a lead capture landing page",
+  "What should my appointment follow-up email say?",
 ];
 
 interface Msg {
@@ -351,7 +351,7 @@ export function AskAssistantPanel() {
       <aside
         className="bg-card fixed inset-y-0 right-0 z-50 flex w-full max-w-[400px] flex-col border-l shadow-2xl"
         role="dialog"
-        aria-label={`Ask ${ASSISTANT_NAME}`}
+        aria-label={ASSISTANT_NAME}
       >
         {/* header */}
         <div className="bg-primary text-primary-foreground flex shrink-0 items-center justify-between gap-3 px-4 py-3.5">
@@ -394,13 +394,13 @@ export function AskAssistantPanel() {
                 <EyeOff className="h-3.5 w-3.5" />
               )}
               {screenContextAllowed
-                ? "Zack can use this screen"
-                : "Allow Zack to use this screen"}
+                ? "MAROS AI can use this screen"
+                : "Allow MAROS AI to use this screen"}
             </span>
             <span>{screenContextAllowed ? "On" : "Off"}</span>
           </button>
           <p className="text-muted-foreground mt-1 px-1 text-[11px] leading-4">
-            Shares visible page text and saved transfer details with Zack for
+            Shares visible page text and saved transfer details with MAROS AI for
             this chat. Turn it off anytime.
           </p>
         </div>
@@ -408,10 +408,10 @@ export function AskAssistantPanel() {
         {/* thread */}
         <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto p-4">
           <AssistantBubble>
-            Hi{firstName ? ` ${firstName}` : ""}! I&apos;m Zack, your AgentStack
+            Hi{firstName ? ` ${firstName}` : ""}! I&apos;m MAROS AI, your marketing
             assistant.
             {isStudio
-              ? " I'm also your marketing and design assistant here in the Studio — ask me for listing copy, captions, campaign ideas, or design advice."
+              ? " I'm also your marketing and design assistant here in the Studio — ask me for service descriptions, captions, campaign ideas, or design advice."
               : " I know your business and your goals. Ask me anything — I can write emails, prep you for appointments, or tell you what to do next."}
           </AssistantBubble>
 
@@ -515,7 +515,7 @@ export function AskAssistantPanel() {
               </button>
             </div>
             <p className="text-muted-foreground mb-2 text-[11px]">
-              Upload an image or PDF to the approved Media Library; Zack can use it in this task.
+              Upload an image or PDF to the approved Media Library; MAROS AI can use it in this task.
             </p>
             <form
             className="flex items-end gap-2 p-0"
@@ -617,7 +617,7 @@ function PermissionCard({
       </div>
       {state === "error" ? (
         <p className="mt-2 text-xs text-red-600 dark:text-red-400">
-          The change was not applied. Zack added the reason below.
+          The change was not applied. MAROS AI added the reason below.
         </p>
       ) : null}
     </div>
@@ -651,13 +651,14 @@ export function AskAssistantButton({ className }: { className?: string }) {
   return (
     <button
       onClick={() => openAskAssistant()}
+      aria-label={ASSISTANT_NAME}
       className={cn(
         "bg-card hover:bg-muted flex items-center gap-1.5 rounded-full border px-3.5 py-2 text-sm font-medium transition-colors",
         className
       )}
     >
       <Sparkles className="h-3.5 w-3.5 text-rose-500" />
-      <span className="hidden sm:inline">Ask {ASSISTANT_NAME}</span>
+      <span className="hidden sm:inline">{ASSISTANT_NAME}</span>
     </button>
   );
 }

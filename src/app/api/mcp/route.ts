@@ -85,15 +85,12 @@ export async function POST(request: Request) {
   const resourceMetadata = `${new URL(request.url).origin}/.well-known/oauth-protected-resource`;
   const bearer = request.headers.get("authorization")?.match(/^Bearer\s+(.+)$/i)?.[1];
   const tokenCaller = bearer ? readAccessToken(bearer) : null;
-  if (bearer && !tokenCaller) {
-    return NextResponse.json({ error: "Invalid access token" }, { status: 401, headers: { "WWW-Authenticate": `Bearer resource_metadata="${resourceMetadata}"` } });
+  if (!tokenCaller) {
+    return NextResponse.json({ error: bearer ? "Invalid access token" : "Not authenticated" }, { status: 401, headers: { "WWW-Authenticate": `Bearer resource_metadata="${resourceMetadata}"` } });
   }
-  const authenticatedRequest = tokenCaller
-    ? new Request(request, { headers: new Headers({ ...Object.fromEntries(request.headers), "x-user-uid": tokenCaller.uid, "x-user-email": tokenCaller.email }) })
-    : request;
-  if (!authenticatedRequest.headers.get("x-user-uid")) return NextResponse.json({ error: "Not authenticated" }, { status: 401, headers: { "WWW-Authenticate": `Bearer resource_metadata="${resourceMetadata}"` } });
+  const authenticatedRequest = new Request(request, { headers: new Headers({ ...Object.fromEntries(request.headers), "x-user-uid": tokenCaller.uid, "x-user-email": tokenCaller.email }) });
   let body: JsonRpcRequest;
-  try { body = (await request.json()) as JsonRpcRequest; } catch { return errorResponse(null, -32700, "Parse error"); }
+  try { body = (await authenticatedRequest.json()) as JsonRpcRequest; } catch { return errorResponse(null, -32700, "Parse error"); }
   const id = body.id;
   if (body.method === "notifications/initialized") return new NextResponse(null, { status: 204 });
   if (body.method === "initialize") return response(id, { protocolVersion: "2025-06-18", capabilities: { tools: { listChanged: false } }, serverInfo: { name: "agentstack", version: "1.0.0" } });

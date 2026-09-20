@@ -27,7 +27,7 @@ export function BrandLockupStacked({
 
   return (
     <span className="inline-flex flex-col items-center">
-      <Logo size={96} idSuffix="-hero" tone={tone} />
+      {brand.name !== "MAROS" && <Logo size={96} idSuffix="-hero" tone={tone} />}
       <span className="mt-3 font-sans text-5xl font-extrabold leading-none tracking-tight sm:text-6xl">
         <span style={{ color: colors.primary }}>{primary}</span>
         {accent && <span style={{ color: colors.accent }}>{accent}</span>}
@@ -36,7 +36,7 @@ export function BrandLockupStacked({
         className="mt-2 text-[10px] font-semibold uppercase sm:text-xs"
         style={{ color: colors.subline, letterSpacing: "0.28em" }}
       >
-        Real Estate Solutions
+        Marketing Operating System
       </span>
       {pill && <span className="mt-5">{pill}</span>}
     </span>
@@ -45,7 +45,7 @@ export function BrandLockupStacked({
 
 export function BrandLockup({
   brand,
-  subline = "Real Estate Solutions",
+  subline = "Marketing Operating System",
   showMark = false,
   size = "md",
   tone = "light",
@@ -68,7 +68,7 @@ export function BrandLockup({
 
   return (
     <span className="flex items-center gap-2">
-      {showMark && (
+      {showMark && brand.name !== "MAROS" && (
         <Logo
           size={size === "sm" ? 22 : 28}
           idSuffix={`-lockup-${size}`}

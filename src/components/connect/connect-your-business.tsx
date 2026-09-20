@@ -230,7 +230,7 @@ export function ConnectYourBusiness() {
         title: "Domain & external host",
         detail: subAccount.customDomain ?? undefined,
         blurb:
-          "Have AgentStack review your existing site and content while your domain and hosting remain with your current provider.",
+          "Have MAROS review your existing site and content while your domain and hosting remain with your current provider.",
         status:
           subAccount.customDomainState === "live"
             ? "connected"
@@ -334,7 +334,7 @@ export function ConnectYourBusiness() {
         title: "Google or Outlook Calendar",
         detail: subAccount.calendarConfig?.email ?? undefined,
         blurb:
-          "Authorize the calendar you already use. OAuth credentials stay server-side; AgentStack never asks you to paste a calendar URL or password.",
+          "Authorize the calendar you already use. OAuth credentials stay server-side; MAROS never asks you to paste a calendar URL or password.",
         status: subAccount.calendarConfig?.status === "connected" ? "connected" : "not_connected",
         actionLabel: subAccount.calendarConfig?.status === "connected" ? "Manage calendar" : "Connect calendar",
         actionHref: calendarHref,
@@ -386,7 +386,7 @@ export function ConnectYourBusiness() {
           ? "text-amber-600 dark:text-amber-400"
           : undefined,
         blurb:
-          "Connect your authorized SmartMLS or other MLS feed through IDX Broker, then sync listings into Properties. AgentStack never asks for your MLS password.",
+          "Connect your authorized SmartMLS or other MLS feed through IDX Broker, then sync listings into Properties. MAROS never asks for your MLS password.",
         status: idxNeedsAttention
           ? "needs_attention"
           : idxConfigured
@@ -489,7 +489,7 @@ export function ConnectYourBusiness() {
         <div>
           <h2 className="text-sm font-medium text-muted-foreground">Saved profile links</h2>
           <p className="mt-1 max-w-3xl text-xs leading-relaxed text-muted-foreground">
-            Paste your public listing-portal URLs here for reference. These are not integrations&mdash;AgentStack
+            Paste your public listing-portal URLs here for reference. These are not integrations&mdash;MAROS
             does not connect to or sync with these sites. The links prefill your Business Blueprint for review.
           </p>
         </div>

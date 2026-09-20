@@ -488,7 +488,7 @@ export function DnsCutoverWizard({
           step={4}
           state="done"
           title="You do not need to change your nameservers"
-          description={`AgentStack does not take over your domain. ${before.domain} stays exactly where it is${currentHost.label !== "your current DNS provider" ? ` at ${currentHost.label}` : ""} — the record you added in the previous step is the whole change. If any guide tells you to swap your nameservers for AgentStack, it is out of date; doing that would take your site and your email offline.`}
+          description={`MAROS does not take over your domain. ${before.domain} stays exactly where it is${currentHost.label !== "your current DNS provider" ? ` at ${currentHost.label}` : ""} — the record you added in the previous step is the whole change. If any guide tells you to swap your nameservers for MAROS, it is out of date; doing that would take your site and your email offline.`}
         >
           {currentHost.url ? (
             <Button

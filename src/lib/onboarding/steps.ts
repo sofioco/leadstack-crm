@@ -72,7 +72,7 @@ export const ONBOARDING_STEPS: readonly OnboardingStepMeta[] = [
     id: "business_profile",
     title: "Get every AI reply sounding like you",
     description:
-      "Tell AgentStack about your business once — name, brokerage, services, brand voice, compliance rules, and FAQs. Every AI agent, email, and automation pulls from this profile automatically.",
+      "Tell MAROS about your business once — name, team, services, brand voice, compliance rules, and FAQs. Every AI agent, email, and automation pulls from this profile automatically.",
     cta: "Set up business profile",
     href: SUB_ACCOUNT_ROUTES.businessProfile,
     videoMinutes: 5,
@@ -90,7 +90,7 @@ export const ONBOARDING_STEPS: readonly OnboardingStepMeta[] = [
     id: "lseo",
     title: "Build a compliant local search campaign",
     description:
-      "Upload a listing or connect IDX, then get guided local SERP recommendations and review-ready campaign drafts across your channels. Nothing publishes without your approval.",
+      "Review campaign drafts and local search recommendations using verified content and supported connections. Nothing publishes without your approval.",
     cta: "Open Campaign Launch Assist",
     href: SUB_ACCOUNT_ROUTES.marketingCampaigns,
     videoMinutes: 4,
@@ -135,14 +135,14 @@ export const ONBOARDING_STEPS: readonly OnboardingStepMeta[] = [
     id: "pipeline",
     title: "See exactly where every deal stands",
     description:
-      "Your pipeline is pre-set for real estate: New Lead → Contacted → Showing Scheduled → Offer Made → Closed. Drag deals as they progress.",
+      "Track opportunities from first contact through qualification, proposal, and Won or Lost. Drag deals as they progress.",
     cta: "View Deals",
     href: SUB_ACCOUNT_ROUTES.pipeline,
     videoMinutes: 3,
   },
   {
     id: "ai",
-    title: "Let AI answer questions while you show homes",
+    title: "Let AI answer questions while you serve customers",
     description:
       "Your AI agent persona is pre-written for a CT realtor. Review it, add your business name, then enable it on SMS and Web Chat.",
     cta: "Set Up AI Agent",
@@ -157,7 +157,7 @@ export const ONBOARDING_STEPS: readonly OnboardingStepMeta[] = [
       // old copy said only "point your website to your own domain", which
       // describes none of the work for a client keeping the site they already
       // have — the commonest case, and one this step is satisfied by.
-      "Tell us where your website lives. Keeping the site you already have? Name your host and we'll check your DNS — nothing moves. Moving to an AgentStack site, or need a domain? We'll walk you through it.",
+      "Tell us where your website lives. Keeping the site you already have? Name your host and we'll check your DNS — nothing moves. Preparing a MAROS site, or need a domain? We'll walk you through it.",
     cta: "Open Domain",
     href: SUB_ACCOUNT_ROUTES.domain,
     videoMinutes: 4,
@@ -189,7 +189,7 @@ export const ONBOARDING_METHOD_STEPS: readonly OnboardingMethodStepMeta[] = [
     id: "build",
     title: "Build your business setup",
     description:
-      "Set your business profile so AgentStack knows your services, voice, hours, and FAQs before anything goes live.",
+      "Set your business profile so MAROS knows your services, voice, hours, and FAQs before anything goes live.",
     cta: "Open Build step",
     href: "/get-started?step=build",
     videoMinutes: 5,

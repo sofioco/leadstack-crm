@@ -130,7 +130,7 @@ describe("the boundary list and the prompt agree", () => {
     // The deterministic check catches phrasings we predicted. The KB has to
     // cover the ones we did not, so the model declines in the same voice
     // instead of answering something the regex missed.
-    expect(ZACK_PRODUCT_KB).toMatch(/Questions Zack does not answer/);
+    expect(ZACK_PRODUCT_KB).toMatch(/Questions MAROS AI does not answer/);
     expect(ZACK_PRODUCT_KB).toMatch(/CPA/);
     expect(ZACK_PRODUCT_KB).toMatch(/licensed appraiser/i);
     expect(ZACK_PRODUCT_KB).toMatch(/loan officer/i);

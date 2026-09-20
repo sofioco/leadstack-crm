@@ -162,7 +162,7 @@ export function DesignerChat({
       setStep(0);
       setSuggestions([]);
       setDone(false);
-      toast.success("Zack conversation reset. Your website draft was kept.");
+      toast.success("MAROS AI conversation reset. Your website draft was kept.");
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "Could not reset the conversation."
@@ -286,7 +286,7 @@ export function DesignerChat({
           </span>
           <div className="flex-1">
             <p className="text-sm font-semibold">
-              {experience === "vibe" ? "Zack · Vibe Builder" : "Designer"}
+              {experience === "vibe" ? "MAROS AI · Vibe Builder" : "Designer"}
             </p>
             <p className="text-muted-foreground text-[11px]">
               {experience === "vibe"
@@ -304,7 +304,7 @@ export function DesignerChat({
               onClick={() => void clearConversation()}
               disabled={loading || clearing}
               className="h-7 px-2 text-[11px]"
-              title="Clear Zack's conversation while keeping the website draft"
+              title="Clear MAROS AI's conversation while keeping the website draft"
             >
               {clearing ? (
                 <Loader2 className="mr-1 h-3 w-3 animate-spin" />
@@ -329,7 +329,7 @@ export function DesignerChat({
       {hasLegacyTranscript ? (
         <div className="mx-3 mt-3 flex items-start justify-between gap-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900">
           <span>
-            This conversation contains replies from the previous builder. Zack
+            This conversation contains replies from the previous builder. MAROS AI
             can now change colors, fonts, spacing, layout variants, and custom
             CSS directly.
           </span>
@@ -424,7 +424,7 @@ export function DesignerChat({
             {pastedCode.tooLarge
               ? `That stylesheet is over the ${MAX_VIBE_MESSAGE_CHARS.toLocaleString()}-character limit — send the sections you care about instead.`
               : pastedCode.rejectedCss.length > 0
-                ? `This CSS uses ${pastedCode.rejectedCss.join(", ")}, which can’t run on a hosted site. Remove it and Zack will apply the rest.`
+                ? `This CSS uses ${pastedCode.rejectedCss.join(", ")}, which can’t run on a hosted site. Remove it and MAROS AI will apply the rest.`
                 : [
                     pastedCode.css
                       ? `${countCssRules(pastedCode.css)} CSS rules will be applied verbatim`
@@ -439,7 +439,7 @@ export function DesignerChat({
                           ),
                         ].join(
                           ", "
-                        )} can’t run here — Zack will translate the intent into styling instead`
+                        )} can’t run here — MAROS AI will translate the intent into styling instead`
                       : null,
                   ]
                     .filter(Boolean)
@@ -458,7 +458,7 @@ export function DesignerChat({
             className="h-12 w-16 rounded-md border object-cover"
           />
           <p className="text-muted-foreground flex-1 text-xs">
-            Screenshot attached — Zack will match this design.
+            Screenshot attached — MAROS AI will match this design.
           </p>
           <button
             type="button"

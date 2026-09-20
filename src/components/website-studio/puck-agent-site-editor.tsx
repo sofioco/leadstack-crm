@@ -98,8 +98,8 @@ export function PuckAgentSiteEditor({
       <Puck
         config={realtorConfig}
         data={data}
-        headerTitle="AgentStack Visual Builder"
-        headerPath="Website Studio / Puck + Zack"
+        headerTitle="MAROS Visual Builder"
+        headerPath="Website Studio / Puck + MAROS AI"
         onChange={updateComposition}
         renderHeaderActions={({ state }) => (
           <button

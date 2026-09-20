@@ -2,6 +2,7 @@ import "server-only";
 
 import { FieldValue } from "firebase-admin/firestore";
 import { getAdminAuth, getAdminDb } from "@/lib/firebase/admin";
+import { requiresSubscription } from "@/lib/auth/deployment-entitlement";
 import { seedDefaultTemplates } from "@/lib/automations/seed-templates";
 import { seedMethodTemplates } from "@/lib/provisioning/method-templates";
 import { defaultNotificationPreferences } from "@/lib/notifications/preferences";
@@ -79,7 +80,7 @@ export async function provisionNewAgency(
     // Agency-model claims.
     agencyId,
     agencyRole: "owner",
-    billingRequired: true,
+    billingRequired: requiresSubscription(),
     ...(requiresEmailVerification ? { requiresEmailVerification: true } : {}),
   });
 

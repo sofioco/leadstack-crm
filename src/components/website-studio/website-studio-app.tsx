@@ -522,7 +522,7 @@ export function WebsiteStudioApp({
             Build a custom site or continue your existing one
           </h1>
           <p className="text-muted-foreground mt-2 max-w-3xl text-sm">
-            Work privately inside AgentStack. Managed domain, hosting, and
+            Work privately inside MAROS. Managed domain, hosting, and
             credentials stay in the guided workspace; nothing publishes until
             you approve it.
           </p>
@@ -555,7 +555,7 @@ export function WebsiteStudioApp({
             </h2>
             <p className="mt-1 text-sm text-emerald-900/75">
               Keep the current site live while you choose the guided hosting and
-              transfer path. AgentStack never proxies it into the editor.
+              transfer path. MAROS never proxies it into the editor.
             </p>
             <span className="mt-3 inline-flex text-sm font-semibold text-emerald-700">
               Open Website &amp; Domain →
@@ -571,7 +571,7 @@ export function WebsiteStudioApp({
               Domain, external host &amp; private keys
             </h2>
             <p className="mt-1 text-sm text-blue-900/75">
-              Keep your domain and hosting with your provider while AgentStack
+              Keep your domain and hosting with your provider while MAROS
               guides setup without exposing provider passwords in the builder.
             </p>
             <span className="mt-3 inline-flex text-sm font-semibold text-blue-700">
@@ -597,15 +597,15 @@ export function WebsiteStudioApp({
               <WandSparkles className="h-5 w-5" />
             </span>
             <p className="mt-5 text-xs font-bold tracking-[0.18em] text-fuchsia-600 uppercase">
-              Internal AgentStack builder
+              Internal MAROS builder
             </p>
             <h1 className="mt-2 text-2xl font-bold tracking-tight">
               Describe it. Watch it take shape.
             </h1>
             <p className="text-muted-foreground mt-3 text-sm leading-6">
-              Zack uses your Business Blueprint to guide the first draft. You
+              MAROS AI uses your Business Blueprint to guide the first draft. You
               can then prompt changes, edit the approved content directly, and
-              switch visual styles without leaving AgentStack.
+              switch visual styles without leaving MAROS.
             </p>
             <Button
               className="mt-6"
@@ -670,7 +670,7 @@ export function WebsiteStudioApp({
               Vibe Builder · private side-by-side workspace
             </p>
             <p className="mt-0.5 text-xs text-violet-900/70">
-              Prompt Zack or edit content on the left. Review every change live
+              Prompt MAROS AI or edit content on the left. Review every change live
               on the right. Nothing publishes without your approval.
             </p>
           </div>
@@ -903,9 +903,9 @@ export function WebsiteStudioApp({
         <div className="space-y-3">
           <div className="flex items-center justify-between rounded-xl border px-4 py-3">
             <div>
-              <div className="text-sm font-semibold">Puck + Zack</div>
+              <div className="text-sm font-semibold">Puck + MAROS AI</div>
               <div className="text-muted-foreground text-xs">
-                Drag sections visually. Zack and manual content edits continue
+                Drag sections visually. MAROS AI and manual content edits continue
                 to use the same site data.
               </div>
             </div>
@@ -914,7 +914,7 @@ export function WebsiteStudioApp({
               size="sm"
               onClick={() => setMode("designer")}
             >
-              Back to Zack
+              Back to MAROS AI
             </Button>
           </div>
           <PuckAgentSiteEditor
@@ -968,7 +968,7 @@ export function WebsiteStudioApp({
                 onClick={() => setMode("visual")}
                 className="text-muted-foreground hover:text-foreground flex-1 rounded px-3 py-1.5 text-xs font-medium transition-colors"
               >
-                Puck + Zack
+                Puck + MAROS AI
               </button>
             </div>
             <div className="min-h-0 flex-1">

@@ -46,7 +46,7 @@ export default function DashboardLayout({
       idx: "IDX Listings",
       import: "Import",
     };
-    document.title = `${labels[section ?? ""] ?? (section ? section.replace(/\b\w/g, (char) => char.toUpperCase()) : "AgentStack")} · AgentStack`;
+    document.title = `${labels[section ?? ""] ?? (section ? section.replace(/\b\w/g, (char) => char.toUpperCase()) : "MAROS")} · MAROS`;
   }, [pathname]);
 
   useEffect(() => {

@@ -400,14 +400,14 @@ function StepBuild({
       icon={<Building2 className="h-6 w-6 text-blue-600" />}
       eyebrow="Step 1: Build · 5 min"
       title="Confirm your domain and hosting foundation"
-      subtitle="Your domain and hosting must be established before anything is published. You can still build, preview, and work throughout AgentStack while the connection or transfer is prepared."
+      subtitle="Your domain and hosting must be established before anything is published. You can still build, preview, and work throughout MAROS while the connection or transfer is prepared."
     >
       <div className="my-6 grid gap-3 sm:grid-cols-3">
         {[
           {
             icon: <Bot className="h-4 w-4 text-blue-500" />,
             title: "AI Receptionist",
-            desc: "Answers every lead using your exact name, brokerage, specialties, and brand voice.",
+            desc: "Answers every lead using your business name, services, specialties, and brand voice.",
           },
           {
             icon: <Zap className="h-4 w-4 text-amber-500" />,
@@ -480,7 +480,7 @@ function StepBuild({
       </div>
 
       <TeachingNote>
-        AgentStack never asks for provider passwords. Sign in with the domain,
+        MAROS never asks for provider passwords. Sign in with the domain,
         host, or CRM directly; then return to approve the connection or
         transfer.
       </TeachingNote>
@@ -505,14 +505,14 @@ function StepConnect({
     <StepShell
       icon={<Link2 className="h-6 w-6 text-violet-600" />}
       eyebrow="Step 2: Blueprint · 3 min"
-      title="Approve the essential facts Zack needs"
-      subtitle="Name, brokerage, contact method, service area, services, client promise, website, and compliance are enough for 100%. Everything else is optional enrichment you can add as you go."
+      title="Approve the essential facts MAROS AI needs"
+      subtitle="Name, organization, contact method, service area, services, customer promise, website, and compliance are enough for 100%. Everything else is optional enrichment you can add as you go."
     >
       <div className="my-6 grid gap-3 sm:grid-cols-2">
         <ConnectOptionCard
           icon={<Upload className="h-5 w-5 text-violet-500" />}
           title="Essential Business Blueprint"
-          description="Review only the facts AgentStack needs to personalize the workspace safely."
+          description="Review only the facts MAROS needs to personalize the workspace safely."
           href={saPath("/business-profile?from=wizard")}
           cta="Review Essentials"
         />
@@ -687,7 +687,7 @@ function StepCapture({
       <TeachingNote>
         Every lead capture system is built on two things: a Form (the page where
         leads give you their info) and an instant AI response (the follow-up
-        that fires within 60 seconds). AgentStack pre-configures both — you just
+        that fires within 60 seconds). MAROS pre-configures both — you just
         review and activate. The whole thing takes about 3 minutes.
       </TeachingNote>
     </StepShell>
@@ -712,7 +712,7 @@ function StepRespond({
       icon={<Zap className="h-6 w-6 text-indigo-600" />}
       eyebrow="Step 4: Respond · 3 min"
       title="Enable instant AI response"
-      subtitle="This is where AgentStack earns its keep. You don't build automations — you enable them. Your AI agent is already pre-configured with your Business Profile. It responds to every lead within 60 seconds across SMS, web chat, and more."
+      subtitle="This is where MAROS earns its keep. You don't build automations — you enable them. Your AI agent is already pre-configured with your Business Profile. It responds to every lead within 60 seconds across SMS, web chat, and more."
     >
       <div className="my-6 grid gap-3 sm:grid-cols-2">
         {[
@@ -785,7 +785,7 @@ function StepRespond({
         Speed-to-Lead is already wired to your lead capture forms. Just enable
         it and every new inquiry fires an SMS + email automatically. Your AI
         agent reads your Business Profile so it already knows your name,
-        brokerage, service areas, and brand voice — review the persona, flip the
+        organization, service areas, and brand voice — review the persona, flip the
         toggle, and go live. No configuration required.
       </TeachingNote>
     </StepShell>
@@ -817,9 +817,8 @@ function StepNurture({
           </div>
           <p className="text-sm font-medium">Your Pipeline</p>
           <p className="text-muted-foreground mt-1 text-xs">
-            Pre-set for real estate: New Lead &rarr; Contacted &rarr; Showing
-            Scheduled &rarr; Offer Made &rarr; Closed. Drag deals as they
-            progress. Customize stages anytime.
+            Track opportunities from first contact through qualification,
+            proposal, and Won or Lost. Drag deals as they progress.
           </p>
         </div>
         <div className="border-border bg-card rounded-xl border p-5">
@@ -850,7 +849,7 @@ function StepNurture({
 
       <TeachingNote>
         Most agents lose deals not because they lack leads, but because
-        follow-up stops. AgentStack handles the nurture automatically — your AI
+        follow-up stops. MAROS handles the nurture automatically — your AI
         texts, your pipeline tracks, and your dashboard shows you exactly who
         needs attention today. You just show up and close.
       </TeachingNote>

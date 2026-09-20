@@ -56,7 +56,7 @@ export function RegisterServiceWorker() {
       }
       if (notify) {
         notified.current = true;
-        toast("A new version of AgentStack is ready", {
+        toast("A new version of MAROS is ready", {
           description:
             "Reload when you are ready. It will also update on its own next time you switch away.",
           duration: Infinity,

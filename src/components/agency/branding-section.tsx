@@ -138,7 +138,7 @@ export function BrandingSection() {
         <p className="text-[11px] text-muted-foreground">
           Public https URL pointing at your logo (SVG or PNG, transparent
           background works best). Renders in the sidebar at 24px tall. Leave
-          blank to fall back to the AgentStack chevron mark.
+          blank to use the text-only MAROS brand.
         </p>
       </div>
 

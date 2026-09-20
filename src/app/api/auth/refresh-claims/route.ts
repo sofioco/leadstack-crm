@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { getAdminAuth } from "@/lib/firebase/admin";
 import { resolveAgencyAccess } from "@/lib/auth/resolve-agency-access";
 import { getAdminDb } from "@/lib/firebase/admin";
+import { requiresSubscription } from "@/lib/auth/deployment-entitlement";
 
 /**
  * Re-emit the caller's custom claims from their current Firestore state.
@@ -42,10 +43,11 @@ export async function POST(request: Request) {
   const subscriptionStatus = agencySnap.data()?.subscriptionStatus;
   const billingRequired =
     resolved.agencyRole === "owner" &&
-    subscriptionStatus !== "active" &&
-    subscriptionStatus !== "trialing";
+    requiresSubscription(subscriptionStatus);
+  const existingClaims = (await auth.getUser(uid)).customClaims ?? {};
 
   await auth.setCustomUserClaims(uid, {
+    ...existingClaims,
     role: legacyRole,
     status: resolved.status,
     agencyId: resolved.agencyId,

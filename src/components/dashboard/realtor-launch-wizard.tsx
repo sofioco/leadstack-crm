@@ -27,6 +27,7 @@ import type {
   RealtorRole as RealtorRoleAnswer,
 } from "@/types/onboarding-answers";
 import type { SubAccountDoc } from "@/types/tenancy";
+import { WORKSPACE_PRESENTATION } from "@/config/workspace-presentation";
 
 /* ---------- types ---------- */
 
@@ -44,6 +45,7 @@ interface RealtorLaunchWizardProps {
 
 type WizardScreen = 0 | 1 | 2 | 3 | 4;
 
+// Keep the legacy API values; these labels do not introduce a new industry schema.
 const ROLE_OPTIONS: {
   value: RealtorRole;
   label: string;
@@ -52,26 +54,26 @@ const ROLE_OPTIONS: {
 }[] = [
   {
     value: "solo_agent",
-    label: "Solo Agent",
-    description: "Individual agent running your own book of business",
+    label: "Local Service Business",
+    description: "Services for customers in your local area",
     icon: <Users className="h-5 w-5" />,
   },
   {
     value: "team_lead",
-    label: "Team Lead",
-    description: "Managing a small team of agents under one brand",
+    label: "Professional Services",
+    description: "Expertise, consulting, and appointment-based services",
     icon: <Users className="h-5 w-5" />,
   },
   {
     value: "brokerage",
-    label: "Brokerage",
-    description: "Operating a brokerage with multiple agents",
+    label: "Ecommerce / Retail",
+    description: "Products sold online or in store",
     icon: <Building2 className="h-5 w-5" />,
   },
   {
     value: "other",
     label: "Other",
-    description: "Mortgage, title, property management, or another role",
+    description: "Another type of business or team",
     icon: <Globe2 className="h-5 w-5" />,
   },
 ];
@@ -85,7 +87,7 @@ const PRIORITY_OPTIONS: {
   {
     value: "get_leads",
     label: "Get more leads",
-    description: "Turn your website, listings, forms, and follow-up into a lead engine.",
+    description: "Turn your website, forms, and follow-up into a lead engine.",
     icon: <Target className="h-5 w-5 text-amber-500" />,
   },
   {
@@ -97,13 +99,13 @@ const PRIORITY_OPTIONS: {
   {
     value: "build_website",
     label: "Build or connect my website",
-    description: "Get your brand, domain, listings, and public presence working together.",
+    description: "Get your brand, domain, and public presence working together.",
     icon: <Globe2 className="h-5 w-5 text-emerald-500" />,
   },
   {
     value: "ai_followup",
     label: "Set up AI follow-up",
-    description: "Let AgentStack respond, qualify, nurture, and help book appointments.",
+    description: "Let MAROS respond, qualify, nurture, and help book appointments.",
     icon: <Bot className="h-5 w-5 text-violet-500" />,
   },
 ];
@@ -118,8 +120,8 @@ const CONNECT_OPTIONS: {
   {
     value: "website",
     label: "Website + domain",
-    description: "Use your own web address and make your existing site work with AgentStack.",
-    guidance: "AgentStack will show you exactly what to change. Your domain stays with your current provider.",
+    description: "Use your own web address and make your existing site work with MAROS.",
+    guidance: "MAROS will show you exactly what to change. Your domain stays with your current provider.",
     icon: <Globe2 className="h-5 w-5" />,
   },
   {
@@ -133,7 +135,7 @@ const CONNECT_OPTIONS: {
     value: "presence",
     label: "Google + social",
     description: "Connect the public accounts people already use to find and contact you.",
-    guidance: "Sign in with the provider when authorization is required. AgentStack never needs your social password.",
+    guidance: "Sign in with the provider when authorization is required. MAROS never needs your social password.",
     icon: <Share2 className="h-5 w-5" />,
   },
 ];
@@ -412,9 +414,9 @@ function ScreenRole({
   return (
     <div className="space-y-6">
       <div>
-        <p className="text-primary text-sm font-semibold tracking-wider uppercase">Welcome to AgentStack</p>
+        <p className="text-primary text-sm font-semibold tracking-wider uppercase">Welcome to MAROS</p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight">First, what kind of business are you running?</h1>
-        <p className="text-muted-foreground mt-2 text-sm">A couple of answers help AS point you to the right setup. You can change anything later.</p>
+        <p className="text-muted-foreground mt-2 text-sm">A couple of answers help MAROS point you to the right setup. You can change anything later.</p>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
@@ -457,7 +459,7 @@ function ScreenPriority({
     <div className="space-y-6">
       <div>
         <p className="text-primary text-sm font-semibold tracking-wider uppercase">Question 2</p>
-        <h1 className="mt-2 text-2xl font-bold tracking-tight">What do you want AgentStack to help with first?</h1>
+        <h1 className="mt-2 text-2xl font-bold tracking-tight">What do you want MAROS to help with first?</h1>
         <p className="text-muted-foreground mt-2 text-sm">We’ll use your answer to put the fastest path in front of you — not make you configure everything.</p>
       </div>
 
@@ -508,21 +510,21 @@ function ScreenIdentity({
       <div>
         <p className="text-primary text-sm font-semibold tracking-wider uppercase">Question 3</p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight">Where does your business already live online?</h1>
-        <p className="text-muted-foreground mt-2 text-sm">Give AS a website, Google Business Profile, or social link. We’ll use public information to prepare your Business Blueprint draft.</p>
+        <p className="text-muted-foreground mt-2 text-sm">Give MAROS a website, Google Business Profile, or social link. We’ll use public information to prepare your Business Blueprint draft.</p>
       </div>
 
       <div className="space-y-3">
         <textarea
           value={profileUrls}
           onChange={(e) => onChangeUrls(e.target.value)}
-          placeholder={"https://yourwebsite.com\nhttps://g.co/your-business-profile\nhttps://instagram.com/youragent"}
+          placeholder={"https://yourwebsite.com\nhttps://g.co/your-business-profile\nhttps://instagram.com/yourbusiness"}
           rows={4}
           className="bg-background w-full rounded-xl border px-4 py-3 text-sm placeholder:text-muted-foreground/50"
         />
         <div className="flex flex-wrap items-center gap-3">
           <Button onClick={onImport} disabled={importing || !profileUrls.trim()} variant="outline">
             {importing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
-            {profileImported ? "Import again" : "Let AS prepare my profile"}
+            {profileImported ? "Import again" : "Let MAROS prepare my profile"}
           </Button>
           {profileImported && (
             <span className="flex items-center gap-1 text-sm font-medium text-emerald-600">
@@ -556,11 +558,11 @@ function ScreenConnect({
       <div>
         <p className="text-primary text-sm font-semibold tracking-wider uppercase">Question 4 · Connect</p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight">What should we connect first?</h1>
-        <p className="text-muted-foreground mt-2 text-sm">AS will take you to the right place and tell you what to do. Pick the piece that matters most — you do not need to connect everything today.</p>
+        <p className="text-muted-foreground mt-2 text-sm">MAROS will take you to the right place and tell you what to do. Pick the piece that matters most — you do not need to connect everything today.</p>
       </div>
 
       <div className="space-y-3">
-        {CONNECT_OPTIONS.map((option) => (
+        {CONNECT_OPTIONS.filter((option) => option.value !== "listings" || WORKSPACE_PRESENTATION.showRealEstate).map((option) => (
           <button
             key={option.value}
             type="button"
@@ -609,8 +611,8 @@ function ScreenNext({
     <div className="space-y-6">
       <div>
         <p className="text-primary text-sm font-semibold tracking-wider uppercase">Question 5 · Keep it moving</p>
-        <h1 className="mt-2 text-2xl font-bold tracking-tight">What should AgentStack help you do next?</h1>
-        <p className="text-muted-foreground mt-2 text-sm">Your answers tell AS where to start. Pick one outcome and we’ll take you there — the rest can evolve as your business does.</p>
+        <h1 className="mt-2 text-2xl font-bold tracking-tight">What should MAROS help you do next?</h1>
+        <p className="text-muted-foreground mt-2 text-sm">Your answers tell MAROS where to start. Pick one outcome and we’ll take you there — the rest can evolve as your business does.</p>
       </div>
 
       <div className="space-y-3">
@@ -638,7 +640,7 @@ function ScreenNext({
       {connectPath && (
         <div className="rounded-xl border border-dashed bg-muted/20 p-4 text-sm">
           <p className="font-medium">Your first connection: {CONNECT_OPTIONS.find((option) => option.value === connectPath)?.label}</p>
-          <p className="text-muted-foreground mt-1">After this question, AS will open the setup for that connection. You can return here anytime.</p>
+          <p className="text-muted-foreground mt-1">After this question, MAROS will open the setup for that connection. You can return here anytime.</p>
         </div>
       )}
 
@@ -657,7 +659,7 @@ function ScreenNext({
       </div>
 
       <p className="text-muted-foreground text-xs">
-        No launch checklist. No setup score. AgentStack stays available while you work.
+        No launch checklist. No setup score. MAROS stays available while you work.
       </p>
     </div>
   );

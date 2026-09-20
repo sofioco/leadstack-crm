@@ -27,7 +27,7 @@
 export type LandingVariant = "agentstack" | "custom";
 
 export const LANDING_VARIANT: LandingVariant = "custom";
-export const AGENTSTACK_METHOD_NAME = "The AgentStack Method™";
+export const AGENTSTACK_METHOD_NAME = "MAROS Setup";
 export const IDX_BROKER_NAME = "IDX Broker";
 
 export const MARKETING_ADD_ON_NAMES = {
@@ -109,17 +109,17 @@ export interface ResolvedBrand {
  */
 export const CUSTOM_BRAND: CustomBrand = {
   /** Displayed in navbar, hero, footer copyright, page title â€" everywhere. */
-  name: "AgentStack",
+  name: "MAROS",
 
   /** One-line positioning, surfaced in hero subtitle + meta description. */
-  tagline: "The operating system for modern real estate professionals",
+  tagline: "Marketing Operating System",
 
   /**
    * Short (~140 char) description used under the hero headline. Should
    * read like a tweet â€" what the product does, for whom.
    */
   shortDescription:
-    "Capture leads, respond instantly, stay organized, and close more transactions with one simple system powered by AI.",
+    "Acquire leads, convert opportunities, retain customers, and measure your marketing in one workspace.",
 
   /** Used on CTA buttons + the FAQ "talk to us" line + footer. */
   supportEmail: "hello@agentstackcrm.app",

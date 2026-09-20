@@ -37,7 +37,7 @@ type Connector = {
 function StatePill({ state }: { state: ConnectorState }) {
   const copy: Record<ConnectorState, string> = {
     connected: "Connected",
-    setup: "Connect in AgentStack",
+    setup: "Connect in MAROS",
     external: "External setup",
     available: "Available now",
     coming_soon: "Planned",
@@ -115,7 +115,7 @@ export function EasyConnectorsSection() {
     {
       id: "website" as const,
       title: "Get my website working",
-      description: "Connect your domain, review your existing site, or build with AgentStack.",
+      description: "Connect your domain, review your existing site, or build with MAROS.",
       icon: Sparkles,
     },
     {
@@ -139,7 +139,7 @@ export function EasyConnectorsSection() {
     {
       id: "ai" as const,
       title: "Add automation & AI",
-      description: "Use AgentStack AI, API/webhooks, MCP, or an external AI provider.",
+      description: "Use MAROS AI, API/webhooks, MCP, or an external AI provider.",
       icon: Bot,
     },
   ];
@@ -148,15 +148,15 @@ export function EasyConnectorsSection() {
     website: {
       question: "Which sounds like you?",
       options: [
-        { title: "I already have a website", description: "Keep your site and connect the domain/content to AgentStack.", href: saPath("/domain"), action: "Connect my website" },
-        { title: "I need a website", description: "Use AgentStack's website tools and connect your domain when you're ready.", href: saPath("/domain"), action: "Start my website" },
+        { title: "I already have a website", description: "Keep your site and connect the domain/content to MAROS.", href: saPath("/domain"), action: "Connect my website" },
+        { title: "I need a website", description: "Use MAROS's website tools and connect your domain when you're ready.", href: saPath("/domain"), action: "Start my website" },
         { title: "I'm not sure", description: "AS can review what you have and point you to the shortest path.", href: saPath("/domain"), action: "Let AS guide me" },
       ],
     },
     listings: {
       question: "What kind of listings do you have?",
       options: [
-        { title: "MLS / IDX listings", description: "Connect your authorized IDX Broker feed and bring approved MLS inventory into AgentStack.", href: idxConnected ? settingsHref + "#mls-feed" : saPath("/idx"), action: idxConnected ? "Manage MLS" : "Connect MLS" },
+        { title: "MLS / IDX listings", description: "Connect your authorized IDX Broker feed and bring approved MLS inventory into MAROS.", href: idxConnected ? settingsHref + "#mls-feed" : saPath("/idx"), action: idxConnected ? "Manage MLS" : "Connect MLS" },
         { title: "My own / off-market listings", description: "Add agent-managed properties without waiting for an MLS feed.", href: saPath("/listings"), action: "Add my listings" },
         { title: "Both", description: "Keep MLS and agent-managed inventory together with source ownership preserved.", href: idxConnected ? settingsHref + "#mls-feed" : saPath("/idx"), action: "Set up my listing sources" },
       ],
@@ -180,8 +180,8 @@ export function EasyConnectorsSection() {
     ai: {
       question: "How do you want to use AI?",
       options: [
-        { title: "Use AgentStack AI", description: "Start with built-in assistants, web chat, workflows, and business context.", href: saPath("/ai-agents"), action: "Open AI" },
-        { title: "Connect another AI", description: "Use MCP or provider API credentials when an external AI client needs AgentStack access.", href: apiHref, action: "Connect AI tools" },
+        { title: "Use MAROS AI", description: "Start with built-in assistants, web chat, workflows, and business context.", href: saPath("/ai-agents"), action: "Open AI" },
+        { title: "Connect another AI", description: "Use MCP or provider API credentials when an external AI client needs MAROS access.", href: apiHref, action: "Connect AI tools" },
         { title: "I'm not sure", description: "AS can start with the built-in tools and add an external connector only when you need it.", href: saPath("/ai-agents"), action: "Let AS guide me" },
       ],
     },
@@ -203,7 +203,7 @@ export function EasyConnectorsSection() {
       key: "claude",
       icon: BrainCircuit,
       title: "Claude / Anthropic API",
-      description: "Use Anthropic API access for Claude-powered workflows and developer tools. AgentStack should never ask for your normal Claude password.",
+      description: "Use Anthropic API access for Claude-powered workflows and developer tools. MAROS should never ask for your normal Claude password.",
       state: "external",
       href: "https://docs.anthropic.com/en/docs/welcome",
       action: "Open Claude guide",
@@ -211,8 +211,8 @@ export function EasyConnectorsSection() {
     {
       key: "mcp",
       icon: PlugZap,
-      title: "MCP — connect AI to AgentStack",
-      description: "AgentStack exposes an authenticated MCP server for MCP-compatible AI clients.",
+      title: "MCP — connect AI to MAROS",
+      description: "MAROS exposes an authenticated MCP server for MCP-compatible AI clients.",
       state: "available",
       href: "/api/mcp",
       action: "Open AS MCP",
@@ -220,8 +220,8 @@ export function EasyConnectorsSection() {
     {
       key: "agentstack-api",
       icon: KeyRound,
-      title: "AgentStack API & webhooks",
-      description: "Create a scoped AgentStack API key for Zapier, Make, custom sites, or server-to-server integrations.",
+      title: "MAROS API & webhooks",
+      description: "Create a scoped MAROS API key for Zapier, Make, custom sites, or server-to-server integrations.",
       state: "setup",
       href: apiHref,
       action: "Manage API access",
@@ -257,7 +257,7 @@ export function EasyConnectorsSection() {
       key: "idx",
       icon: ServerCog,
       title: "IDX Broker / MLS",
-      description: "Connect the authorized IDX Broker account to bring approved MLS inventory into AgentStack.",
+      description: "Connect the authorized IDX Broker account to bring approved MLS inventory into MAROS.",
       state: idxConnected ? "connected" : "setup",
       href: idxConnected ? settingsHref + "#mls-feed" : saPath("/idx"),
       action: idxConnected ? "Manage MLS" : "Connect MLS",
@@ -278,7 +278,7 @@ export function EasyConnectorsSection() {
             </div>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            You don’t need to know which integration you need. Tell AgentStack what you want working first, and we’ll guide the connection.
+            You don’t need to know which integration you need. Tell MAROS what you want working first, and we’ll guide the connection.
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-2 rounded-xl border bg-background px-3 py-2 text-xs text-muted-foreground">
@@ -353,7 +353,7 @@ export function EasyConnectorsSection() {
 
       <div className="mt-4 flex items-start gap-2 text-xs text-muted-foreground">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-        <p>Use provider authorization or a key created specifically for AgentStack. Never paste secrets into chat, screenshots, email, or public forms.</p>
+        <p>Use provider authorization or a key created specifically for MAROS. Never paste secrets into chat, screenshots, email, or public forms.</p>
       </div>
     </section>
   );

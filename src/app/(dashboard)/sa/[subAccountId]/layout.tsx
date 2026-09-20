@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { getAdminDb } from "@/lib/firebase/admin";
 import { SubAccountProvider } from "@/context/sub-account-context";
+import { CUSTOM_BRAND } from "@/config/landing";
 
 export async function generateMetadata({
   params,
@@ -12,7 +13,7 @@ export async function generateMetadata({
   const snap = await getAdminDb().doc(`subAccounts/${subAccountId}`).get();
   const workspace = (snap.data()?.name as string | undefined) ?? "Workspace";
   return {
-    title: { default: workspace, template: `%s · ${workspace}` },
+    title: { default: `${workspace} · ${CUSTOM_BRAND.name}`, template: `%s · ${workspace} · ${CUSTOM_BRAND.name}` },
   };
 }
 

@@ -205,7 +205,7 @@ const SITUATIONS: Array<{
     id: "new",
     title: "I don't have a website",
     description:
-      "Bring a domain and external host; AgentStack helps you prepare the site content and business setup.",
+      "Bring a domain and external host; MAROS helps you prepare the site content and business setup.",
     icon: PlusCircle,
   },
   {
@@ -445,7 +445,7 @@ export function DomainConnect() {
       id: "keep_existing",
       title: "Use my external host",
       description:
-        "Keep your website with the hosting provider you already use. AgentStack only records the provider and checks DNS.",
+        "Keep your website with the hosting provider you already use. MAROS only records the provider and checks DNS.",
     },
   ];
 
@@ -681,7 +681,7 @@ export function DomainConnect() {
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-blue-100">
             Two steps: connect your domain and record your external host.
-            AgentStack keeps the current website live and can check DNS, but
+            MAROS keeps the current website live and can check DNS, but
             does not provide hosting or change where your site is served.
           </p>
         </div>
@@ -743,7 +743,7 @@ export function DomainConnect() {
           <div>
             <p className="font-semibold">The public website stays untouched.</p>
             <p className="mt-1 text-xs leading-5">
-              AgentStack does not host websites, proxy third-party sites,
+              MAROS does not host websites, proxy third-party sites,
               replace nameservers, alter email DNS, or publish automatically.
               We only record your external host and verify your domain.
             </p>
@@ -763,7 +763,7 @@ export function DomainConnect() {
             step={1}
             state={domainSaved ? "done" : "active"}
             title="Connect your domain"
-            description="Save the domain you already own and the address it points at today. We store the address and status only — the current site is not copied into an AgentStack iframe."
+            description="Save the domain you already own and the address it points at today. We store the address and status only — the current site is not copied into an MAROS iframe."
           />
 
           {situation === "switching" ? (
@@ -866,7 +866,7 @@ export function DomainConnect() {
               hostingConnected ? "done" : domainSaved ? "active" : "locked"
             }
             title="Connect your host"
-            description="Tell us which external provider serves this website. AgentStack does not provide or transfer hosting; it only records the provider and checks DNS."
+            description="Tell us which external provider serves this website. MAROS does not provide or transfer hosting; it only records the provider and checks DNS."
           />
 
           {!domainSaved ? (
@@ -922,7 +922,7 @@ export function DomainConnect() {
                   </select>
                   <p className="text-muted-foreground mt-2 text-xs leading-5">
                     Your site, widgets, IDX embeds, and keys stay exactly where
-                    they are. AgentStack only stores the provider name so Zack
+                    they are. MAROS only stores the provider name so MAROS AI
                     can give you the right DNS instructions.
                   </p>
                   <Button
@@ -975,7 +975,7 @@ export function DomainConnect() {
             step={3}
             state={verifyResult?.state === "live" ? "done" : domainSaved ? "active" : "locked"}
             title="Verify your domain"
-            description={`AgentStack does not host websites or provide DNS cutover instructions. Your domain stays with your registrar and ${hostLabel} remains responsible for hosting.`}
+            description={`MAROS does not host websites or provide DNS cutover instructions. Your domain stays with your registrar and ${hostLabel} remains responsible for hosting.`}
           />
 
           {/* The real check. Available on both paths — an agent staying on

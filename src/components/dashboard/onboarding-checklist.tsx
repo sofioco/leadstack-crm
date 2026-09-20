@@ -317,7 +317,7 @@ export function OnboardingChecklist({
       {/* Snapshot applied banner */}
       <div className="mt-3 flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2 text-xs text-blue-700 dark:bg-blue-950/40 dark:text-blue-300">
         <Sparkles className="h-3.5 w-3.5 shrink-0" />
-        Your account came pre-configured with a real estate pipeline, ready
+        Your account came pre-configured with a sales pipeline, ready
         email &amp; SMS templates, an AI persona, and draft workflows. Pick your
         business type below to tailor it, then just review and activate.
       </div>

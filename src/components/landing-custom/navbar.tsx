@@ -26,7 +26,7 @@ export function Navbar({ brand }: { brand: ResolvedBrand }) {
   const [open, setOpen] = useState(false);
   const publicBrand: ResolvedBrand = {
     ...brand,
-    name: "AgentStack",
+    name: "MAROS",
     logoUrl: null,
   };
 
@@ -77,7 +77,7 @@ export function Navbar({ brand }: { brand: ResolvedBrand }) {
                     size="sm"
                     className="bg-[#1a2f50] text-white hover:bg-[#243d66]"
                   >
-                    Join AgentStack
+                    Join MAROS
                   </Button>
                 </>
               )}
@@ -140,7 +140,7 @@ export function Navbar({ brand }: { brand: ResolvedBrand }) {
                         size="sm"
                         onClick={() => setOpen(false)}
                       >
-                        Join AgentStack
+                        Join MAROS
                       </Button>
                     </>
                   )}

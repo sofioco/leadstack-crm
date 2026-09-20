@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { authMiddleware } from "next-firebase-auth-edge/lib/next/middleware";
 import { isCustomDomainHost, normalizeHost } from "@/lib/domains/app-hosts";
+import { isSelfHostedDeployment } from "@/lib/auth/deployment-entitlement";
 
 const PUBLIC_PATHS = [
   "/",
@@ -335,7 +336,7 @@ export default function middleware(request: NextRequest) {
       const requiresVerification =
         decodedToken.requiresEmailVerification === true;
       const isVerified = decodedToken.email_verified === true;
-      const billingRequired = decodedToken.billingRequired === true;
+      const billingRequired = decodedToken.billingRequired === true && !isSelfHostedDeployment();
       if (
         billingRequired &&
         pathname !== "/subscribe" &&

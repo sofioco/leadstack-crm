@@ -40,7 +40,7 @@ function ErrorBanner() {
         </p>
         <p className="text-muted-foreground">
           {workspaceMissing
-            ? "Create your fresh AgentStack workspace below to begin setup."
+            ? "Create your fresh MAROS workspace below to begin setup."
             : "Pick one below or ask the agency owner for an invite."}
         </p>
       </div>
@@ -206,7 +206,7 @@ function AgencyHomeContent() {
         </p>
         <p className="text-muted-foreground mx-auto mt-2 max-w-md text-sm">
           {repairFailed
-            ? "Sign out and sign in again to refresh your AgentStack workspace."
+            ? "Sign out and sign in again to refresh your MAROS workspace."
             : "We’re securely refreshing your agency access. This page will reload automatically."}
         </p>
         {repairFailed && (

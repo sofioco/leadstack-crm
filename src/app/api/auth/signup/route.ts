@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
 import { getAdminAuth, getAdminDb } from "@/lib/firebase/admin";
 import { provisionNewAgency } from "@/lib/auth/provision-agency";
+import { requiresSubscription } from "@/lib/auth/deployment-entitlement";
 import { isMarketingPlanKey } from "@/config/landing";
 import { defaultNotificationPreferences } from "@/lib/notifications/preferences";
 import { GLOBAL_TERRITORY_ID, type Role } from "@/types";
@@ -168,6 +169,7 @@ export async function POST(request: Request) {
         requiresEmailVerification: true,
       });
 
+      const requiresBilling = requiresSubscription();
       return NextResponse.json({
         uid,
         role: "admin",
@@ -175,8 +177,8 @@ export async function POST(request: Request) {
         agencyRole: "owner",
         subAccountId,
         planKey,
-        requiresBilling: true,
-        redirectTo: "/subscribe",
+        requiresBilling,
+        redirectTo: requiresBilling ? "/subscribe" : "/agency",
       });
     }
 

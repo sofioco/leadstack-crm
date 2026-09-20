@@ -793,7 +793,7 @@ export default function DashboardPage() {
               Welcome to your first working day.
             </h2>
             <p className="text-muted-foreground mt-1 text-sm">
-              Start with the recommended action below. Zack can guide you
+              Start with the recommended action below. MAROS AI can guide you
               through it without leaving this page.
             </p>
           </div>
@@ -926,14 +926,14 @@ function UniversalTaskQueue({ items }: { items: UniversalTask[] }) {
           </p>
           <h2 className="mt-1 text-lg font-semibold">What needs attention</h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            AgentStack names the next actions it can verify from your workspace.
+            MAROS names the next actions it can verify from your workspace.
           </p>
         </div>
       </div>
       {items.length === 0 ? (
         <p className="text-muted-foreground mt-5 rounded-xl border border-dashed p-4 text-sm">
           No unresolved action is currently visible. New work will appear here
-          when AgentStack can verify it.
+          when MAROS can verify it.
         </p>
       ) : (
         <ol className="mt-5 grid gap-3 md:grid-cols-2">
@@ -1165,7 +1165,7 @@ function ScheduleCard({
           <p className="text-muted-foreground mt-1 text-xs">
             {tomorrowCount > 0
               ? `${tomorrowCount} appointment${tomorrowCount !== 1 ? "s" : ""} tomorrow.`
-              : "Add a showing or connect your calendar to start booking here."}
+              : "Add an appointment or connect your calendar to start booking here."}
           </p>
           <Button
             size="sm"
@@ -1242,7 +1242,7 @@ function SetupProgressCard({
         <div className="max-w-2xl space-y-3">
           <div>
             <p className="text-muted-foreground text-[11px] font-semibold tracking-[0.24em] uppercase">
-              The AgentStack Method
+              MAROS Setup
             </p>
             <h2 className="mt-1 text-lg font-semibold tracking-tight">
               Your business is {progress}% ready
