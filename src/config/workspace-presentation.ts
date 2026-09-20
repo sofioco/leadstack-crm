@@ -7,5 +7,5 @@ export const WORKSPACE_PRESENTATION = {
 
 export function isWorkspaceNavVisible(href: string): boolean {
   return WORKSPACE_PRESENTATION.showRealEstate ||
-    (href !== "/properties" && href !== "/idx");
+    (href !== "/properties" && href !== "/idx" && href !== "/marketing/campaigns");
 }

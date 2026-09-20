@@ -3,18 +3,20 @@
 import Link from "next/link";
 import { Building2 } from "lucide-react";
 import { useAgency } from "@/hooks/use-agency";
+import { useSelfHostedClientDocuments } from "@/context/client-documents-context";
 import { useSubAccount } from "@/context/sub-account-context";
 import { Button } from "@/components/ui/button";
 
 export function BrokerFeatureOnly({ children }: { children: React.ReactNode }) {
   const agency = useAgency();
+  const selfHostedClientDocuments = useSelfHostedClientDocuments();
   const { saPath } = useSubAccount();
 
   if (agency.loading) {
     return <div className="bg-muted/30 h-64 animate-pulse rounded-2xl" />;
   }
 
-  if (agency.multiAccountModeEnabled) return children;
+  if (agency.multiAccountModeEnabled || selfHostedClientDocuments) return children;
 
   return (
     <div className="bg-card mx-auto max-w-xl rounded-2xl border p-8 text-center">

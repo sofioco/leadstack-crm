@@ -7,6 +7,7 @@ import { UserX } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { useSubAccount } from "@/context/sub-account-context";
 import { useAgency } from "@/hooks/use-agency";
+import { useSelfHostedClientDocuments } from "@/context/client-documents-context";
 import { subscribeToContact } from "@/lib/firestore/contacts";
 import { Button } from "@/components/ui/button";
 import { ContactProfileHeader } from "@/components/contacts/contact-profile-header";
@@ -25,6 +26,7 @@ export default function ContactProfilePage() {
   const { user, loading: authLoading } = useAuth();
   const { subAccount, subAccountId, agencyId } = useSubAccount();
   const agency = useAgency();
+  const selfHostedClientDocuments = useSelfHostedClientDocuments();
   const [contact, setContact] = useState<Contact | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -61,7 +63,7 @@ export default function ContactProfilePage() {
       <div className="space-y-6">
         <ContactProfileHeader contact={contact} />
         <ContactDeals contact={contact} />
-        {agency.multiAccountModeEnabled ? (
+        {agency.multiAccountModeEnabled || selfHostedClientDocuments ? (
           <ContactQuotes
             contactId={contact.id}
             scope={{ agencyId: agencyId ?? "", subAccountId }}

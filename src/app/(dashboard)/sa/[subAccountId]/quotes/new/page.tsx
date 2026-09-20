@@ -118,7 +118,7 @@ export default function NewQuotePage() {
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
           {kind === "invoice"
-            ? "Build the line items and totals. Save as draft now — sending mints a Stripe Payment Link and emails the recipient."
+            ? "Build the line items and totals. Save as a draft now, then send with a PayPal payment link or record an offline payment."
             : "Build the line items, totals, and terms. Save as a draft now — send to the recipient when you're ready."}
         </p>
       </div>

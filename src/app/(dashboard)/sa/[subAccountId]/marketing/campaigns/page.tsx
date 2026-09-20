@@ -618,7 +618,7 @@ export default function MarketingCampaignsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold">MLS Campaign Panel</h1>
+        <h1 className="text-2xl font-semibold">Property Campaigns</h1>
         <p className="text-muted-foreground mt-1 text-sm">
           Build reviewable, facts-only campaign drafts from the licensed IDX
           feed.

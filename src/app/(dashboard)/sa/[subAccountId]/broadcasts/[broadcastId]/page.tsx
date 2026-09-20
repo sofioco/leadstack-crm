@@ -86,7 +86,7 @@ export default function BroadcastDetailPage() {
           className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="h-3 w-3" />
-          Back to broadcasts
+          Back to Email Campaigns
         </Link>
         <div className="rounded-2xl border border-dashed bg-card/50 p-10 text-center">
           <h3 className="text-base font-semibold">Broadcast not found</h3>
@@ -112,7 +112,7 @@ export default function BroadcastDetailPage() {
           className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="h-3 w-3" />
-          Back to broadcasts
+          Back to Email Campaigns
         </Link>
         <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
           <div className="min-w-0">

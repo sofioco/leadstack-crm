@@ -51,6 +51,7 @@ import { useDueTodayCount } from "@/hooks/use-due-today";
 import { useUnreadConversationsCount } from "@/hooks/use-unread-conversations";
 import { useAuth } from "@/hooks/use-auth";
 import { useAgency } from "@/hooks/use-agency";
+import { useSelfHostedClientDocuments } from "@/context/client-documents-context";
 import { CUSTOM_BRAND } from "@/config/landing";
 import { isWorkspaceNavVisible } from "@/config/workspace-presentation";
 import { InstallCallout } from "@/components/pwa/install-callout";
@@ -86,7 +87,7 @@ interface PrimaryNavItem {
 
 const PRIMARY_NAV: PrimaryNavItem[] = [
   { href: "/dashboard", label: "Today", icon: Home },
-  { href: "/contacts", label: "People", icon: Users, badgeKey: "unreadConversations" },
+  { href: "/contacts", label: "Contacts", icon: Users, badgeKey: "unreadConversations" },
   { href: "/pipeline", label: "Deals", icon: GitBranch },
   { href: "/properties", label: "Properties", icon: MapPin },
 ];
@@ -114,11 +115,11 @@ const NAV_GROUPS: NavGroup[] = [
     label: "Marketing",
     icon: Megaphone,
     items: [
-      { href: "/marketing/campaigns", label: "Campaigns", icon: Megaphone, enabled: true },
+      { href: "/marketing/campaigns", label: "Property Campaigns", icon: Megaphone, enabled: true },
       { href: "/forms", label: "Lead Capture", icon: FileText, enabled: true },
-      { href: "/workflows", label: "Follow-Up Plans", icon: Workflow, enabled: true },
-      { href: "/funnels", label: "Marketing Pages", icon: Filter, enabled: true },
-      { href: "/broadcasts", label: "Broadcasts", icon: Send, enabled: true },
+      { href: "/workflows", label: "Automations", icon: Workflow, enabled: true },
+      { href: "/funnels", label: "Landing Pages", icon: Filter, enabled: true },
+      { href: "/broadcasts", label: "Email Campaigns", icon: Send, enabled: true },
       { href: "/social", label: "Social Planner", icon: Share2, enabled: true },
       { href: "/idx", label: "Listings", icon: Building, enabled: true },
       { href: "/marketing/ad-spend", label: "Ad Spend & Billing", icon: DollarSign, enabled: true },
@@ -126,7 +127,7 @@ const NAV_GROUPS: NavGroup[] = [
   },
   {
     key: "grow",
-    label: "Grow My Business",
+    label: "Sales & Engagement",
     icon: Rocket,
     items: [
       { href: "/calendar", label: "Calendar", icon: Calendar, enabled: true },
@@ -134,7 +135,7 @@ const NAV_GROUPS: NavGroup[] = [
       { href: "/conversations", label: "Conversations", icon: MessagesSquare, enabled: true, badgeKey: "unreadConversations" },
       { href: "/tasks", label: "Tasks", icon: CheckSquare, enabled: true, badgeKey: "dueToday" },
       { href: "/ai-agents", label: "AI Assistants", icon: Bot, enabled: true },
-      { href: "/quotes", label: "Quotes", icon: FileSignature, enabled: true },
+      { href: "/quotes", label: "Quotes & Invoices", icon: FileSignature, enabled: true },
       { href: "/reports", label: "Analytics", icon: BarChart3, enabled: true },
     ],
   },
@@ -456,6 +457,7 @@ function NavGroupSection({
   communityHidden: boolean;
   multiAccountMode: boolean;
 }) {
+  const selfHostedClientDocuments = useSelfHostedClientDocuments();
   // Auto-expand if any child route is active
   const hasActiveChild = group.items.some((item) => {
     const fullHref = `${subRoot}${item.href}`;
@@ -493,7 +495,7 @@ function NavGroupSection({
           {group.items.map((item) => {
             if (!isWorkspaceNavVisible(item.href)) return null;
             if (
-              !multiAccountMode &&
+              !multiAccountMode && !selfHostedClientDocuments &&
               (item.href === "/quotes" || item.href === "/products")
             ) {
               return null;

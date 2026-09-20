@@ -344,8 +344,8 @@ export function SubAccountManageDialog({ subAccount, open, onOpenChange }: Props
       if (broadcastsDirty) {
         parts.push(
           broadcastsEnabled
-            ? "Broadcasts enabled."
-            : "Broadcasts disabled. Historical broadcasts preserved; new sends blocked until re-enabled.",
+            ? "Email Campaigns enabled."
+            : "Email Campaigns disabled. Historical campaigns preserved; new sends blocked until re-enabled.",
         );
       }
       if (outboundDirty) {
@@ -402,7 +402,7 @@ export function SubAccountManageDialog({ subAccount, open, onOpenChange }: Props
       // tenant will see.
       const hiddenChanges: string[] = [];
       if (broadcastsHiddenDirty)
-        hiddenChanges.push(`Broadcasts ${broadcastsHidden ? "hidden" : "shown as Locked"}`);
+        hiddenChanges.push(`Email Campaigns ${broadcastsHidden ? "hidden" : "shown as Locked"}`);
       if (websiteHiddenDirty)
         hiddenChanges.push(`Website ${websiteHidden ? "hidden" : "shown as Locked"}`);
       if (socialHiddenDirty)
@@ -478,7 +478,7 @@ export function SubAccountManageDialog({ subAccount, open, onOpenChange }: Props
             onChange={setBroadcastsEnabled}
             disabled={saving}
             icon={<Send className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />}
-            title="Broadcasts"
+            title="Email Campaigns"
             hideOption={{
               hidden: broadcastsHidden,
               onHiddenChange: setBroadcastsHidden,
@@ -487,7 +487,7 @@ export function SubAccountManageDialog({ subAccount, open, onOpenChange }: Props
           >
             When enabled, this sub-account can send bulk email broadcasts (up to
             25,000 recipients per send) to filtered audiences. Disabling locks
-            the Broadcasts sidebar entry and returns 403 on new send attempts;
+            the Email Campaigns sidebar entry and returns 403 on new send attempts;
             historical broadcast docs and in-flight QStash messages are preserved.
           </GateToggle>
 

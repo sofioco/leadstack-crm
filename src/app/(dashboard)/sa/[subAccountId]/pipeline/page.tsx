@@ -326,7 +326,7 @@ function EmptyState({
           <NewDealDialog contacts={contacts} />
         ) : (
           <Button render={<Link href={saPath("/contacts")} />}>
-            Go to People
+            Go to Contacts
           </Button>
         )}
         <ShowExampleButton subAccountId={subAccountId} canSeed={canSeed} />

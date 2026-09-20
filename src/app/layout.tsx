@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Providers } from "@/components/providers";
+import { ClientDocumentsProvider } from "@/context/client-documents-context";
+import { isSelfHostedDeployment } from "@/lib/auth/deployment-entitlement";
 import { RefTracker } from "@/components/affiliate/ref-tracker";
 import { AnalyticsScripts } from "@/components/analytics-scripts";
 import { CUSTOM_BRAND, LANDING_VARIANT } from "@/config/landing";
@@ -99,7 +101,9 @@ export default function RootLayout({
             />
           </noscript>
         )}
-        <Providers>{children}</Providers>
+        <ClientDocumentsProvider selfHosted={isSelfHostedDeployment()}>
+          <Providers>{children}</Providers>
+        </ClientDocumentsProvider>
         <RefTracker />
         {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
           <noscript>

@@ -47,7 +47,7 @@ describe("subscription middleware", () => {
     expect(response.headers.get("location")).toBe("http://localhost/subscribe");
   });
 
-  it.each(["/agency", "/agency/sub-accounts/new", "/sa/workspace-1/dashboard"])("allows a verified self-hosted owner through %s despite a stale billing claim", async (path) => {
+  it.each(["/agency", "/agency/sub-accounts/new", "/sa/workspace-1/dashboard", "/sa/workspace-1/quotes", "/sa/workspace-1/quotes/new?kind=invoice", "/sa/workspace-1/products", "/api/sub-accounts/workspace-1/quotes"])("allows a verified self-hosted owner through %s despite a stale billing claim", async (path) => {
     vi.stubEnv("SELF_HOSTED_MODE", "true");
     const options = await optionsFor(path);
     const headers = new Headers({ "x-user-uid": "spoofed" });

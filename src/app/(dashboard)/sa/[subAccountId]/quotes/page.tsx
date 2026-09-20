@@ -39,11 +39,11 @@ export default function QuotesPage() {
     <div className="space-y-6 p-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Quotes &amp; invoices</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Quotes &amp; Invoices</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Send branded quotes for review or invoices for payment. Recipients
             view on a shareable link; quotes get accepted/declined, invoices
-            pay via Stripe.
+            can be paid via PayPal or recorded as paid offline.
           </p>
         </div>
         <div className="flex items-center gap-2">

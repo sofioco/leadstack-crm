@@ -78,7 +78,7 @@ type Result =
 
 const KIND_META: Record<Result["kind"], { label: string; icon: React.ElementType; tone: string }> = {
   contact: {
-    label: "People",
+    label: "Contacts",
     icon: Users,
     tone: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
   },

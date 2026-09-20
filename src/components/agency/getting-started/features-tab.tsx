@@ -40,7 +40,7 @@ interface Feature {
 const FEATURES: Feature[] = [
   {
     icon: Users,
-    title: "People",
+    title: "Contacts",
     tone: "indigo",
     href: "/contacts",
     description:
@@ -112,7 +112,7 @@ const FEATURES: Feature[] = [
   },
   {
     icon: Zap,
-    title: "Follow-Up Plans",
+    title: "Automations",
     tone: "violet",
     href: SUB_ACCOUNT_ROUTES.workflows,
     description:
@@ -128,7 +128,7 @@ const FEATURES: Feature[] = [
   },
   {
     icon: Send,
-    title: "Broadcasts (bulk email)",
+    title: "Email Campaigns",
     tone: "indigo",
     href: "/broadcasts",
     description:

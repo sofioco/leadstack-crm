@@ -57,14 +57,14 @@ export default function BroadcastsListPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Broadcasts</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Email Campaigns</h1>
           <p className="text-sm text-muted-foreground">
             Bulk email sends. Open any one for per-recipient delivery status.
           </p>
         </div>
         <Button render={<Link href={saPath("/contacts")} />} variant="outline">
           <Mail className="mr-1 h-4 w-4" />
-          Send a new broadcast
+          Send a new email campaign
         </Button>
       </div>
 
@@ -193,7 +193,7 @@ function EmptyState({ contactsHref }: { contactsHref: string }) {
       <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
         <Send className="h-5 w-5" />
       </div>
-      <h3 className="text-base font-semibold">No broadcasts yet</h3>
+      <h3 className="text-base font-semibold">No email campaigns yet</h3>
       <p className="mx-auto mt-1 max-w-md text-sm text-muted-foreground">
         Send a bulk email to all contacts, or to anyone with a specific tag /
         pipeline stage. Opted-out contacts are skipped automatically.
